@@ -1,0 +1,35 @@
+using System;
+
+namespace Common.Exceptions
+{
+    [Serializable]
+    public class TestException : Exception
+    {
+        public TestException (int errorNumber, string message) : base(message)
+        {
+            ErrorNumber = errorNumber;
+            Timestamp = DateTime.UtcNow;
+        }
+
+        public TestException (int errorNumber, string message, Exception ex) : base(message, ex)
+        {
+            ErrorNumber = errorNumber;
+            Timestamp = DateTime.UtcNow;
+        }
+
+        public DateTime Timestamp { get; }
+
+        public int ErrorNumber { get; }
+
+        public override string Message
+        {
+            get
+            {
+            
+                return string.Concat("Error ", ErrorNumber, " : ", base.Message);
+            }
+        }
+    }
+}
+ if (eee.IsError)
+                throw new test(ErrorNumbers.AuthTokenRetrievalFailure, $"Failed to retrieve token: {ee.Error} {ee.ErrorDescription}");
